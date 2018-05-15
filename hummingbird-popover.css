@@ -1,28 +1,28 @@
-.hummingbird-treeview,
-.hummingbird-treeview *
+.hummingbird-popover,
+.hummingbird-popover *
 {
     list-style: none;
     font-size: 20px;
     line-height: 24px;
 }
 
-.hummingbird-treeview label {
+.hummingbird-popover label {
     font-weight: normal;
 }
 
 
-.hummingbird-treeview input[type=checkbox] {
+.hummingbird-popover input[type=checkbox] {
     width : 16px;
     height :16px;
     padding: 0px;
     margin: 0px;
 }
 
-.hummingbird-treeview ul:not(.hummingbird-base) {
+.hummingbird-popover ul:not(.hummingbird-base) {
     display: none;
 }
 
-.hummingbird-treeview .fa {
+.hummingbird-popover .fa {
     font-style: normal;
     cursor: pointer;
 }

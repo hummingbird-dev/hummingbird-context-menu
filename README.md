@@ -100,6 +100,40 @@ $("#theText").hummingbirdPopover();
 Congratulations, you are done, your HTML element has now right mouseclick popover functionality.
 
 
+### Multiple popovers on one page
+
+Multiple popovers on one page can be implemented straight forward. Just create a new bindpoint
+and new popover content. Make sure to use the same names for the bindpoint's *data-id* and the
+content's *id*.
+
+
+### Events
+
+An event is fired if a popover option has been selected (left mouse click) so that your application can respond:
+
+- **hummingbirdPopover_action**<br>
+The event can be catched as shown below. The selected popover option can be retrieved from the *data* parameter.
+
+
+``` javascript
+
+$("#theText").on("hummingbirdPopover_action", function(e,data) {
+   //do something ...
+
+      if (data.includes("Red") || data.includes("Blue")) {
+         $("#theText").css({"color":data});
+      }
+      if (data == "bold" || data == "normal" || data == "lighter") {
+         $("#theText").css({"font-weight":data});
+      }
+
+});
+
+```
+
+
+
+
 
 
 

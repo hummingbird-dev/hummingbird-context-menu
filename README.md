@@ -107,6 +107,18 @@ and new popover content. Make sure to use the same names for the bindpoint's *da
 content's *id*. Then initialize the hummingbird-popover on the new bindpoint.
 
 
+### Methods
+
+Methods are used to interact with the popover programmatically. The following method is available:
+- **destroy()**<br>
+Destroys all popovers.
+
+``` javascript
+
+$("#theText").hummingbirdPopover("destroy");
+
+```
+
 ### Events
 
 An event is fired if a popover option has been selected (left mouse click) so that your application can respond:

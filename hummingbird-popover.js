@@ -347,31 +347,25 @@
 	};
 	
 	
-	if (methodName == "method") {
+	if (methodName == "destroy") {
 	    return this.each(function(){
-		$.fn.hummingbirdPopover.method($(this));
+		$.fn.hummingbirdPopover.destroy($(this));
 	    });
 	}
 
     }
 
-        //options defaults
+    //options defaults
     $.fn.hummingbirdPopover.defaults = {
 	mouseButton: "right",
-	// collapsedSymbol: "fa-plus",
-	// collapseAll: true,
-	// checkboxes: "enabled",
-	// checkboxesGroups: "enabled",
-	// checkDoubles: false,
-	//checkDisabled: false,   //this is now not changeable and true always
     };
 
 
     
     //-------------------Methods---------------//
-    $.fn.hummingbirdPopover.method = function(){
-	//console.log("method")
-	//tree.children("li").children("label").children("input:checkbox").prop('indeterminate', false).prop('checked', false).trigger("click");
+    $.fn.hummingbirdPopover.destroy = function(){
+	$(".hummingbird-popover").popover("destroy");
+	$(".hummingbird-popover").remove();	
     };
 
 	

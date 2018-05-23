@@ -10,7 +10,7 @@ A tiny and fast jQuery plugin for multi-layer popovers
 - Based on simple HTML lists.
 - Can be attached to any HTML element.
 - Supports multiple layer menues.
-- Supports multiple popover's on one page.
+- Supports multiple popovers on one page.
 
 
 ## Dependencies

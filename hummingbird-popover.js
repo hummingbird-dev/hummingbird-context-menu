@@ -357,7 +357,7 @@
 
         //options defaults
     $.fn.hummingbirdPopover.defaults = {
-	mouseButton: "left",
+	mouseButton: "right",
 	// collapsedSymbol: "fa-plus",
 	// collapseAll: true,
 	// checkboxes: "enabled",

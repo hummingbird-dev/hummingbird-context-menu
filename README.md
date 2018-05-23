@@ -89,9 +89,15 @@ colors*, etc.
 
 ```
 
+Initialize hummingbird-popover:
 
+``` javascript
 
+$("#theText").hummingbirdPopover();
 
+```
+
+Congratulations, you are done, your HTML element has now right mouseclick popover functionality.
 
 
 

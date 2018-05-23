@@ -89,7 +89,7 @@ colors*, etc.
 
 ```
 
-Initialize hummingbird-popover:
+Initialize hummingbird-popover and bind it to the HTML element (`#theText`).
 
 ``` javascript
 
@@ -104,7 +104,7 @@ Congratulations, you are done, your HTML element has now right mouseclick popove
 
 Multiple popovers on one page can be implemented straight forward. Just create a new bindpoint
 and new popover content. Make sure to use the same names for the bindpoint's *data-id* and the
-content's *id*.
+content's *id*. Then initialize the hummingbird-popover on the new bindpoint.
 
 
 ### Events

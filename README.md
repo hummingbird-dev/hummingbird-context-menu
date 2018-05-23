@@ -26,6 +26,32 @@ The hummingbird-popover is tested with these versions, newer versions work most 
 ![alt text](./popover_example_anim.gif "hummingbird-popover example animation")
 
 
+## Getting started
+### Usage
+
+Add the following resources for the hummingbird-popover to function correctly:
+
+```html
+	
+    <!-- Required Stylesheets -->
+    <link href="/path/to/bootstrap.css" rel="stylesheet">
+    <link href="/path/to/font-awesome.css" rel="stylesheet">
+    <link href="/path/to/hummingbird-popover.css" rel="stylesheet">
+
+    <!-- Required Javascript -->
+    <script src="/path/to/jquery.js"></script>
+    <script src="/path/to/bootstrap.js"></script>
+    <script src="/path/to/hummingbird-popover.js"></script>
+
+```
+
+Create an HTML element as bindpoint for the popover, e.g. an
+`<h1>`. The *id* and *data-id* can be chosen
+arbitrarily. However, it is important that the *data-id* and the
+*id* of the popover "structure", i.e. the list containing the
+popover content, are **equal**.
+
+
 
 
 

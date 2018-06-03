@@ -147,12 +147,12 @@ $("#theText").on("hummingbirdPopover_action", function(e,data) {
    //do something ...
 
       if (data.text.includes("Red") || data.text.includes("Blue")) {
-         $("#theText").css({"color":data});
+         $("#theText").css({"color":data.text});
       }
       if (data.text == "bold" || data.text == "normal" || data.text == "lighter") {
-         $("#theText").css({"font-weight":data});
+         $("#theText").css({"font-weight":data.text});
       }
-	  if (data.data-id == "dark") {
+	  if (data.dataID == "dark") {
 		  alert("A dark color has been chosen!")
 	  }
 

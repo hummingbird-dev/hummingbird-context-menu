@@ -103,7 +103,7 @@
 				    $(".hummingbird-popover").remove();
 				    //no popover active
 				    popover_active = false;
-				    action = { "text" : target.text().trim(), "data-id" : target.attr("data-id")};
+				    action = { "text" : target.text().trim(), "dataID" : target.attr("data-id")};
 				    console.log("action= " + JSON.stringify(action))
 				    //console.log(bindpoint)						
 				    bindpoint.trigger("hummingbirdPopover_action",action)

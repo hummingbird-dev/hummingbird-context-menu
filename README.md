@@ -67,7 +67,7 @@ items. This means that items of one popover can have a popover by
 themselves. In the example the base popover contains *Change
 text*, *Change color* and *Change font*.  The *Change
 color* has again a popover containing *Red colors* and *Blue
-colors*, etc. Add additional custom data via the *data-id* of individual *"<li>"*'s.
+colors*, etc. Add additional custom data via the *data-id* of individual `<li>`'s.
 
 ``` html
 

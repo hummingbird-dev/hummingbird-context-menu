@@ -40,7 +40,7 @@
 	bindpoint = $(this);
 	var bindpoint_cursor = bindpoint.css("cursor");
 	var DataID = $(this).attr("data-id");
-	console.log("data-id=" + DataID)
+	//console.log("data-id=" + DataID)
 	//console.log("bindpoint has cursor: " + bindpoint_cursor)
 
 	var methodName = options;
@@ -99,12 +99,30 @@
 				var data_id_of_the_a = $("body").find("a.hummingbird-popover").attr("data-id");
 
 				if (data_id_of_the_a == DataID) {
+				    //get the parent tr of this
+				    var index = target.attr("id");
+				    var parent_tr_text = [];
+				    var parent_index_tmp = index.replace(/(_[^_]*)$/g,""); //finds the last _, and replaces the _ and everything after that _ with ""
+				    var new_parent_index_tmp = "";
+				    var m = 0;
+				    while (parent_index_tmp !== new_parent_index_tmp) {
+					//console.log("parent_index_tmp= " + parent_index_tmp)
+					new_parent_index_tmp = parent_index_tmp;
+					//console.log($('#' + parent_index_tmp))
+					parent_tr_text[m] = $('#' + parent_index_tmp).children("td").text();
+					//console.log("text= " + parent_tr_text[m]);
+					parent_index_tmp = parent_index_tmp.replace(/(_[^_]*)$/g,"");
+					m++;
+				    }
+
 				    $(".hummingbird-popover").popover("destroy");
 				    $(".hummingbird-popover").remove();
+
+
 				    //no popover active
 				    popover_active = false;
-				    action = { "text" : target.text().trim(), "dataID" : target.attr("data-id")};
-				    console.log("action= " + JSON.stringify(action))
+				    action = { "text" : target.text().trim(), "dataID" : target.attr("data-id"), "parentsText" : parent_tr_text};
+				    //console.log("action= " + JSON.stringify(action))
 				    //console.log(bindpoint)						
 				    bindpoint.trigger("hummingbirdPopover_action",action)
 				}
@@ -139,7 +157,7 @@
 
 
 				function create_popover(e) {
-			    console.log("this is the hummingbird-popover")
+			    //console.log("this is the hummingbird-popover")
 			    //remove popover
 			    $(".hummingbird-popover").popover("destroy");
 			    $(".hummingbird-popover").remove();
@@ -218,13 +236,13 @@
 				    //console.log($(this))
 				    var str = $(this).attr("id");
 				    if (typeof(str) !== "undefined") {
-					str = str.split("_");
+					str = str.split("-");            //layer:0_1_2_3
 					if (str[0] == "layer") {
 					    $(this).addClass("info");
 
 					    
-					    var index = "0." + str[1];
-					    var index_id = index.replace(/./g,"");
+					    var index = "0_" + str[1];
+					    //var index_id = index.replace(/./g,"");
 					    //console.log("index= " + index);
 					    var title = ""
 					    $(this).popover({html:true,placement:"auto right",content:popover_lists[DataID][index]});
@@ -248,7 +266,7 @@
 				function(){
 				    var str = $(this).attr("id");
 				    if (typeof(str) !== "undefined") {
-					str = str.split("_");
+					str = str.split("-");
 					if (str[0] == "layer") {
 					    $(this).removeClass("info"); //.popover("destroy");
 					}
@@ -295,7 +313,7 @@
 
 
     $.fn.hummingbirdPopover.setContent = function(){
-	console.log("setContent")
+	//console.log("setContent")
 	// console.log(popover_lists)
 	// //get the data-id of this popover
 	// var data_id = $(".hummingbird-popover").attr("data-id");	
@@ -310,7 +328,7 @@
 	var conv_lists_num = 0;
 	$.each(conv_lists,function(){
 	    conv_lists_num++;
-	    console.log("id= " + $(this).attr("id"))
+	    //console.log("id= " + $(this).attr("id"))
 	    var list_id = $(this).attr("id");
 
 	    //create the popover_lists objects
@@ -350,7 +368,7 @@
 
 		//add caret right or endnode
 		var caret_right = "";
-		var endnode=" ";
+		var endnode="inbetweennode";
 		if (numHyphen_next > numHyphen) {
 		    caret_right = '<i class="fa fa-caret-right"></i>';
 		    //caret_right = 'hallo';
@@ -366,14 +384,14 @@
 		    part_of_layer[numHyphen] = part_of_layer[numHyphen] +1;
 		}
 
-		var layer = "layer_" + part_of_layer.toString().replace(/,/g,".");
-		//console.log("I'm in layer: " + layer)
+		var layer = "layer-" + part_of_layer.toString().replace(/,/g,"_"); //here an array is converted to a string, with commas as seperator
+		//console.log("I'm in layer: " + layer)                            //then the commas are interchanged by dots
 
 
 		//if this popover does not exist -> initialise
 		var index = "0";
 		for (var i=1;i<part_of_layer.length;i++) {
-		    index = index + "." + part_of_layer[i-1];
+		    index = index + "_" + part_of_layer[i-1];
 		}
 		//console.log("index= " + index);
 

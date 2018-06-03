@@ -139,7 +139,10 @@ An event is fired if a popover option has been selected (left mouse click) so th
 
 - **hummingbirdPopover_action**<br> The event can be catched as shown
 below. The selected popover option can be retrieved from the
-*data.text* parameter and the optional custom data (via the *data-id*) can be retrieved from the *data.dataID* parameter.
+*data.text* parameter and the optional custom data (via the *data-id*)
+can be retrieved from the *data.dataID* parameter.  The whole "path"
+of the selected option is returned as the array
+*data.parentsText*.  Click on "OrangeRed" as an example.
 
 
 ``` javascript
@@ -156,6 +159,9 @@ $("#theText").on("hummingbirdPopover_action", function(e,data) {
 	  if (data.dataID == "dark") {
 		  alert("A dark color has been chosen!")
 	  }
+      if (data.text == "OrangeRed") {
+         alert("Parent items are " + JSON.stringify(data.parentsText))
+      }
 
 });
 

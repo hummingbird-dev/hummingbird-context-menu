@@ -137,8 +137,9 @@ $("#theText").hummingbirdPopover("setContent");
 
 An event is fired if a popover option has been selected (left mouse click) so that your application can respond:
 
-- **hummingbirdPopover_action**<br>
-The event can be catched as shown below. The selected popover option can be retrieved from the *data* parameter.
+- **hummingbirdPopover_action**<br> The event can be catched as shown
+below. The selected popover option can be retrieved from the
+*data.text* parameter and the optional custom data (via the *data-id*) can be retrieved from the *data.dataID* parameter.
 
 
 ``` javascript

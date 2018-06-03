@@ -89,11 +89,14 @@ colors*, etc.
 
 ```
 
-Initialize hummingbird-popover and bind it to the HTML element (`#theText`).
+Initialize hummingbird-popover and bind it to the HTML element
+(`#theText`). Then create the popover content by calling the
+**setContent()** method.
 
 ``` javascript
 
 $("#theText").hummingbirdPopover();
+$("#theText").hummingbirdPopover("setContent");
 
 ```
 
@@ -109,13 +112,23 @@ content's *id*. Then initialize the hummingbird-popover on the new bindpoint.
 
 ### Methods
 
-Methods are used to interact with the popover programmatically. The following method is available:
+Methods are used to interact with the popover programmatically. The following methods are available:
 - **destroy()**<br>
 Destroys all popovers.
 
 ``` javascript
 
 $("#theText").hummingbirdPopover("destroy");
+
+```
+- **setContent()**<br> Creates the content of the popover. This method
+can be used to dynamically change the popover's content. Thus, call
+this method after changing the content of the popover content
+structure (that one with class=hummingbird-popover-converter).
+
+``` javascript
+
+$("#theText").hummingbirdPopover("setContent");
 
 ```
 

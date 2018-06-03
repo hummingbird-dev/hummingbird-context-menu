@@ -11,7 +11,8 @@ A tiny and fast jQuery plugin for multi-layer popovers
 - Can be attached to any HTML element.
 - Supports multiple layer menues.
 - Supports multiple popovers on one page.
-
+- Dynamical change of popover content.
+- Add custom data via *data-id*
 
 ## Dependencies
 
@@ -66,7 +67,7 @@ items. This means that items of one popover can have a popover by
 themselves. In the example the base popover contains *Change
 text*, *Change color* and *Change font*.  The *Change
 color* has again a popover containing *Red colors* and *Blue
-colors*, etc.
+colors*, etc. Add additional custom data via the *data-id* of individual *<li>'s*.
 
 ``` html
 
@@ -74,11 +75,11 @@ colors*, etc.
 <li>Change text</li>
 <li>Change color</li>
 <li>-Red colors</li>
-<li>--DarkRed</li>
+<li data-id="dark">--DarkRed</li>
 <li>--Red</li>
 <li>--OrangeRed</li>
 <li>-Blue colors</li>
-<li>--MidnightBlue</li>
+<li data-id="dark">--MidnightBlue</li>
 <li>--Blue</li>
 <li>--LightSkyBlue</li>
 <li>Change font</li>
@@ -145,12 +146,15 @@ The event can be catched as shown below. The selected popover option can be retr
 $("#theText").on("hummingbirdPopover_action", function(e,data) {
    //do something ...
 
-      if (data.includes("Red") || data.includes("Blue")) {
+      if (data.text.includes("Red") || data.text.includes("Blue")) {
          $("#theText").css({"color":data});
       }
-      if (data == "bold" || data == "normal" || data == "lighter") {
+      if (data.text == "bold" || data.text == "normal" || data.text == "lighter") {
          $("#theText").css({"font-weight":data});
       }
+	  if (data.data-id == "dark") {
+		  alert("A dark color has been chosen!")
+	  }
 
 });
 

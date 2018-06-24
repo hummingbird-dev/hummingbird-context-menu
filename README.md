@@ -125,7 +125,13 @@ $("#theText").hummingbirdPopover("destroy");
 - **setContent()**<br> Creates the content of the popover. This method
 can be used to dynamically change the popover's content. Thus, call
 this method after changing the content of the popover content
-structure (that one with class=hummingbird-popover-converter).
+structure (that one with class=hummingbird-popover-converter). It is
+also possible to change the content on a right mouse click event,
+hence just before the popover is created. Therefor, the right mouse
+click event must be catched with the jQuery *mousedown* method
+before the popover catches it, which means that the *mousedown*
+method must appear before the *hummingbird-popover.js* in your
+source code.
 
 ``` javascript
 
@@ -134,7 +140,10 @@ $("#theText").hummingbirdPopover("setContent");
 ```
 - **hide()**<br> Call this method to hide the following popover on the
   next right mouse click. After that, popovers are again normally
-  triggered by the right mouse click event.
+  triggered by the right mouse click event. Similar to the
+  *setContent* method, this method can be used directly after a
+  right mouse click to prevent the popover directly on this click,
+  i.e. the popover is not shown on this click.
 
 ``` javascript
 

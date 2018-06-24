@@ -101,7 +101,7 @@ $("#theText").hummingbirdPopover("setContent");
 
 ```
 
-Congratulations, you are done, your HTML element has now right mouseclick popover functionality.
+Congratulations, you are done, your HTML element has now right mouse click popover functionality.
 
 
 ### Multiple popovers on one page
@@ -130,6 +130,15 @@ structure (that one with class=hummingbird-popover-converter).
 ``` javascript
 
 $("#theText").hummingbirdPopover("setContent");
+
+```
+- **hide()**<br> Call this method to hide the following popover on the
+  next right mouse click. After that, popovers are again normally
+  triggered by the right mouse click event.
+
+``` javascript
+
+$("#theText").hummingbirdPopover("hide");
 
 ```
 

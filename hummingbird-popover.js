@@ -18,7 +18,8 @@
     var last_right_mouse_click = {};
 
     var bindpoint = {};
-    
+
+    var hide_popover = false;
     //var popover_list = '<ul class="list-group" style="cursor:pointer;">';
     //var popover_list = '<div class="hummingbird-popover table-responsive text-center" style="cursor:pointer;"><table class="table table-striped table-condensed"><tbody>';
 
@@ -148,7 +149,17 @@
 			    //create popover
 			    last_right_mouse_click = e;
 			    //console.log("last_right_mouse_click" + JSON.stringify(e))
-			    create_popover(e);
+			    console.log("start popover")
+			    console.log("hide_popover= " + hide_popover)
+			    //if the method hide has been triggered, then the popover for this
+			    //right click will not be shown
+			    //the set hide_popover immediately to false again
+			    //so that the next right click will again trigger a popover
+			    if (hide_popover == false) {
+				create_popover(e);
+			    } else {
+				hide_popover = false;
+			    }
 
 			}
 		    }
@@ -283,6 +294,8 @@
 	    });
 	};
 	
+
+	//console.log("methodName= " + methodName)
 	
 	if (methodName == "destroy") {
 	    return this.each(function(){
@@ -293,6 +306,12 @@
 	if (methodName == "setContent") {
 	    return this.each(function(){
 		$.fn.hummingbirdPopover.setContent($(this));
+	    });
+	}
+
+	if (methodName == "hide") {
+	    return this.each(function(){
+		$.fn.hummingbirdPopover.hide($(this));
 	    });
 	}
 
@@ -311,6 +330,13 @@
 	$(".hummingbird-popover").remove();	
     };
 
+    //hide poppover for the current right click
+    $.fn.hummingbirdPopover.hide = function(){
+	//console.log("hide!!!!!!!!!!!!!!!!!!")
+	hide_popover = true;
+    };
+
+    
 
     $.fn.hummingbirdPopover.setContent = function(){
 	//console.log("setContent")

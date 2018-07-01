@@ -149,8 +149,8 @@
 			    //create popover
 			    last_right_mouse_click = e;
 			    //console.log("last_right_mouse_click" + JSON.stringify(e))
-			    console.log("start popover")
-			    console.log("hide_popover= " + hide_popover)
+			    //console.log("start popover")
+			    //console.log("hide_popover= " + hide_popover)
 			    //if the method hide has been triggered, then the popover for this
 			    //right click will not be shown
 			    //the set hide_popover immediately to false again
@@ -159,6 +159,12 @@
 				create_popover(e);
 			    } else {
 				hide_popover = false;
+				//if the last click has not created a popover
+				//the next click can create a popover
+				//otherwise if a popover was open and then a click on the
+				//canvas was made the next click on a data window would not open a popover
+				//because popover_active would still be true
+				popover_active = false;
 			    }
 
 			}
@@ -167,7 +173,7 @@
 		});
 
 
-				function create_popover(e) {
+		function create_popover(e) {
 			    //console.log("this is the hummingbird-popover")
 			    //remove popover
 			    $(".hummingbird-popover").popover("destroy");
@@ -201,7 +207,7 @@
 				cursor: bindpoint_cursor, 
 			    }).appendTo("body");
 			    //set html to true
-			    $('#hummingbird-popover-' + k).popover({html:true});
+		    $('#hummingbird-popover-' + k).popover({html:true,placement:"auto right"});
 
 			    //prevent context menue
 			    $('#hummingbird-popover-' + k).on("contextmenu", function(e) {

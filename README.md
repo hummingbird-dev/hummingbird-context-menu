@@ -103,6 +103,16 @@ $("#theText").hummingbirdPopover("setContent");
 
 Congratulations, you are done, your HTML element has now right mouse click popover functionality.
 
+### <tr> styling
+
+Under the hood, the items are based on <tr> tags. To style the items it is possible top add css styles like
+
+```html
+
+<li data-strStyle="border-bottom:3px solid;">Change color</li>
+
+```
+which adds a bold line below the item. Other stylings are possible.
 
 ### Multiple popovers on one page
 

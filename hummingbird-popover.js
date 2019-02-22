@@ -80,6 +80,7 @@
 			if (target.is("tr") === false) {
 			    $(".hummingbird-popover").popover("destroy");
 			    $(".hummingbird-popover").remove();
+			    bindpoint.trigger("hummingbirdPopover_closed");
 			    //no popover active
 			    popover_active = false;
 			} else {
@@ -118,14 +119,14 @@
 
 				    $(".hummingbird-popover").popover("destroy");
 				    $(".hummingbird-popover").remove();
-
+				    bindpoint.trigger("hummingbirdPopover_closed");
 
 				    //no popover active
 				    popover_active = false;
 				    action = { "text" : target.text().trim(), "dataID" : target.attr("data-id"), "parentsText" : parent_tr_text};
 				    //console.log("action= " + JSON.stringify(action))
 				    //console.log(bindpoint)						
-				    bindpoint.trigger("hummingbirdPopover_action",action)
+				    bindpoint.trigger("hummingbirdPopover_action",action);
 				}
 			    } else {
 				//console.log("not endnode")
@@ -228,11 +229,12 @@
 			    // 	'</tbody></table></div>';
 			    
 			    $('#hummingbird-popover-' + k).attr("data-content",popover_lists[DataID]["0"]);
-
+		    
 			    //bind popover to that element and show
-			    $('#hummingbird-popover-' + k).popover("show");
+		    $('#hummingbird-popover-' + k).popover("show");
 			    popover_active = true;
-
+		    bindpoint.trigger("hummingbirdPopover_active");
+		    
 			    //console.log("these are the tr children")
 			    var these_trs = $('#hummingbird-popover-' + k).next(".popover").find("tr");
 			    //console.log(these_trs)
@@ -333,13 +335,15 @@
     //-------------------Methods---------------//
     $.fn.hummingbirdPopover.destroy = function(){
 	$(".hummingbird-popover").popover("destroy");
-	$(".hummingbird-popover").remove();	
+	$(".hummingbird-popover").remove();
+	bindpoint.trigger("hummingbirdPopover_closed")
     };
 
     //hide poppover for the current right click
     $.fn.hummingbirdPopover.hide = function(){
 	//console.log("hide!!!!!!!!!!!!!!!!!!")
 	hide_popover = true;
+	bindpoint.trigger("hummingbirdPopover_closed")
     };
 
     
@@ -381,6 +385,7 @@
 	    $.each(poplist, function(i,e) {
 		var popText = $(this).text();
 		var popDataID = $(this).attr("data-id");
+		var poptrStyle = $(this).attr("data-trStyle");
 		//Regular Expression for all leading hyphens
 		var regExp = /^-+/;
 
@@ -431,9 +436,9 @@
 
 		if (typeof(popover_lists[list_id][index]) == "undefined") {
 		    popover_lists[list_id][index] = '<div class="hummingbird-popover table-responsive text-left" style="cursor:pointer;"><table id="' + 'tab_' + index  + '" class="hummingbird-popover table table-striped table-condensed popover_table"><tbody>';
-		    popover_lists[list_id][index] = popover_lists[list_id][index] + '<tr class="' + endnode  + '"  id="' + layer  + '" data-id="' + popDataID  + '"><td  style="white-space:nowrap;border:none;">' + popText + '</td><td  style="white-space:nowrap;border:none;">' + caret_right + '</td></tr>'
+		    popover_lists[list_id][index] = popover_lists[list_id][index] + '<tr class="' + endnode  + '"  id="' + layer  + '" data-id="' + popDataID  + '" style="' + poptrStyle  + '"><td  style="white-space:nowrap;border:none;">' + popText + '</td><td  style="white-space:nowrap;border:none;">' + caret_right + '</td></tr>'
 		} else {
-		    popover_lists[list_id][index] = popover_lists[list_id][index] + '<tr class="' + endnode  + '"  id="' + layer  + '" data-id="' + popDataID  + '"><td  style="white-space:nowrap;">' + popText + '</td><td  style="white-space:nowrap">' + caret_right + '</td></tr>'
+		    popover_lists[list_id][index] = popover_lists[list_id][index] + '<tr class="' + endnode  + '"  id="' + layer  + '" data-id="' + popDataID  + '" style="' + poptrStyle  + '"><td  style="white-space:nowrap;">' + popText + '</td><td  style="white-space:nowrap">' + caret_right + '</td></tr>'
 		}
 
 		

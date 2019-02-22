@@ -1,6 +1,6 @@
 # hummingbird-popover
 
-A tiny and fast jQuery plugin for multi-layer right click context-menues.
+A tiny and fast jQuery plugin for multi-layer right click context-menus.
 
 #### [Visit demo page ](https://hummingbird-dev.000webhostapp.com/hummingbird-popover)
 

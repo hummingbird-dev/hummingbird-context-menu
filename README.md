@@ -109,7 +109,7 @@ Under the hood, the items are based on ```<tr>``` tags. To style the items it is
 
 ```html
 
-<li data-strStyle="border-bottom:3px solid;">Change color</li>
+<li data-trStyle="border-bottom:3px solid;">Change color</li>
 
 ```
 which adds a bold line below the item. Other stylings are possible.

@@ -1,0 +1,63 @@
+.hummingbird-popover,
+.hummingbird-popover *
+{
+    list-style: none;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.hummingbird-popover label {
+    font-weight: normal;
+}
+
+
+.hummingbird-popover input[type=checkbox] {
+    width : 16px;
+    height :16px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.hummingbird-popover ul:not(.hummingbird-base) {
+    display: none;
+}
+
+.hummingbird-popover .fa {
+    font-style: normal;
+    cursor: pointer;
+}
+
+.popover .arrow {
+    display:none;
+}
+
+.popover-content {
+    padding: 0;
+}
+
+.popover-title {
+    text-align: center;
+}
+
+
+.hummingbird-popover .table-responsive {
+    border:none;
+    margin:0px;
+}
+
+.hummingbird-popover .table {
+    border:none;
+    margin:0px;
+}
+
+/* .table-borderless > thead > tr > th, */
+/* .table-borderless > tbody > tr > th, */
+/* .table-borderless > tfoot > tr > th, */
+/* .table-borderless > thead > tr > td, */
+/* .table-borderless > tbody > tr > td, */
+/* .table-borderless > tfoot > tr > td { */
+    /* border:none; */
+    /* border: 1px solid #dddddd; */
+    /* border-right-width:0px; */
+    /* border-left-width:0px; */
+/* } */
